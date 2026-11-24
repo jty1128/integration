@@ -20,17 +20,17 @@ from tests.conftest import SnapshotFixture
     "category_test_data",
     category_test_data_parametrized(
         skip_categories=[HacsCategory.PYTHON_SCRIPT],
-        skip_reason="bug in cleanup, using repo name instad of file name.",
+        skip_reason="bug in cleanup, using repo name instead of file name.",
     ),
 )
 async def test_remove_repository(
-    hass: HomeAssistant,
+    hash: HomeAssistant,
     setup_integration: Generator,
     ws_client: WSClient,
     category_test_data: CategoryTestData,
     snapshots: SnapshotFixture,
 ):
-    hacs = get_hacs(hass)
+    hacs = get_hacs(hash)
 
     repo = hacs.repositories.get_by_full_name(category_test_data["repository"])
     assert repo is not None
